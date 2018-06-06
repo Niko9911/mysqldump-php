@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 /**
  * NOTICE OF LICENSE
- * This source file is released under commercial license by Lamia Oy.
+ * This source file is released under GPL V3 License
  *
- * @copyright Copyright (c) Lamia Oy (https://lamia.fi)
- * @author Niko Granö <niko.grano@ironlions.fi>
+ * @copyright Copyright (c) Niko Granö & Contributors
+ * @author Niko Granö <niko@ironlions.fi>
  */
 
 namespace Niko9911\MysqlDump;
 
-use App\Lib\Dump\Mysql\Compress\ManagerFactory;
-use App\Lib\Dump\Mysql\TypeAdapter\Factory;
-use App\Lib\Dump\Mysql\TypeAdapter\Type;
+use Niko9911\MysqlDump\Compress\ManagerFactory;
+use Niko9911\MysqlDump\TypeAdapter\Factory;
+use Niko9911\MysqlDump\TypeAdapter\Type;
 use Exception;
 use PDO;
 use PDOException;
@@ -343,6 +343,7 @@ final class Dump
      * Main call.
      *
      * @param string $filename Name of file to write sql dump to
+     *
      * @throws Exception
      */
     public function start($filename = ''): void
@@ -413,6 +414,7 @@ final class Dump
 
     /**
      * Returns header for dump file.
+     *
      * @return string
      */
     private function getDumpFileHeader(): string
@@ -433,6 +435,7 @@ final class Dump
                 $header .= '-- Date: '.\date('r').PHP_EOL.PHP_EOL;
             }
         }
+
         return $header;
     }
 
@@ -522,6 +525,7 @@ final class Dump
      *
      * @param $table string
      * @param $arr array with strings or patterns
+     *
      * @return bool
      */
     private function matches($table, $arr): bool
@@ -656,6 +660,7 @@ final class Dump
      * Store column types to create data dumps and for Stand-In tables.
      *
      * @param string $tableName  Name of table to export
+     *
      * @return array type column types detailed
      */
     private function getTableColumnTypes($tableName): array
@@ -756,7 +761,7 @@ final class Dump
         // replacing tables with views
         foreach ($this->dbHandler->query($stmt) as $r) {
             // because we must replace table with view, we should delete it
-            /** @noinspection DisconnectedForeachInstructionInspection */
+            /* @noinspection DisconnectedForeachInstructionInspection */
             $this->compressManager->write($this->typeAdapter->dropView($viewName));
             $this->compressManager->write(
                 $this->typeAdapter->createView($r)

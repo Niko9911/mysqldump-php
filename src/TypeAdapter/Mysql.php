@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 /**
  * NOTICE OF LICENSE
- * This source file is released under commercial license by Lamia Oy.
+ * This source file is released under GPL V3 License
  *
- * @copyright Copyright (c) Lamia Oy (https://lamia.fi)
- * @author Niko Granö <niko.grano@ironlions.fi>
+ * @copyright Copyright (c) Niko Granö & Contributors
+ * @author Niko Granö <niko@ironlions.fi>
  */
 
 namespace Niko9911\MysqlDump\TypeAdapter;

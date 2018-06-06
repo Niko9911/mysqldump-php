@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 /**
  * NOTICE OF LICENSE
- * This source file is released under commercial license by Lamia Oy.
+ * This source file is released under GPL V3 License
  *
- * @copyright Copyright (c) Lamia Oy (https://lamia.fi)
- * @author Niko Granö <niko.grano@ironlions.fi>
+ * @copyright Copyright (c) Niko Granö & Contributors
+ * @author Niko Granö <niko@ironlions.fi>
  */
 
 namespace Niko9911\MysqlDump\TypeAdapter;
@@ -192,6 +192,7 @@ interface Type
     /**
      * Description:.
      *
+     * @param string $table
      * @return int
      */
     public function unlockTable(string $table): ?int;
@@ -330,25 +331,28 @@ interface Type
     public function endDisableAutocommit(): string;
 
     /**
-     * Description:
+     * Description:.
      *
      * @param string $eventName
+     *
      * @return string
      */
     public function showCreateEvent(string $eventName): string;
 
     /**
-     * Description:
+     * Description:.
      *
      * @param $row
+     *
      * @return string
      */
     public function createEvent(array $row): string;
 
     /**
-     * Description:
+     * Description:.
      *
      * @param string $procedureName
+     *
      * @return string
      */
     public function showCreateProcedure(string $procedureName): string;
